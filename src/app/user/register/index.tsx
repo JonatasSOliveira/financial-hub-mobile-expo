@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
-import User from "../../../models/user";
-import { supabase } from "../../../services/supabase";
+import User from "../../../models/User";
+import { UserService } from "../../../services/UserService";
 
 export default function UserRegister() {
+  const userService = new UserService();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -17,8 +19,7 @@ export default function UserRegister() {
     }
 
     const user = new User(email, password);
-    const { data, error } = await supabase.auth.signUp(user.getRaw());
-    console.log(data, error);
+    await userService.signUp(user);
   }
 
   return (
