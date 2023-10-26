@@ -1,7 +1,7 @@
 import { supabase } from "../libs/supabase";
 import User from "../models/User";
 
-export class UserService {
+export default class UserService {
   async signUp(user: User): Promise<void> {
     const result = await supabase.auth.signUp(user.getRaw());
     console.log(result);

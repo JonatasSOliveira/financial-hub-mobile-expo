@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
 import User from "../../../models/User";
-import { UserService } from "../../../services/UserService";
+import UserService from "../../../services/UserService";
 
 export default function UserRegister() {
   const userService = new UserService();
